@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.8.12)
 project(darknet_ros)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_FORCE_INLINES")
 # Set c++11 cmake flags
 set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
 
@@ -25,9 +26,10 @@ if (CUDA_FOUND)
     -gencode arch=compute_30,code=sm_30
     -gencode arch=compute_35,code=sm_35
     -gencode arch=compute_50,code=[sm_50,compute_50]
-    -gencode arch=compute_52,code=[sm_52,compute_52]
-    -gencode arch=compute_61,code=sm_61
-    -gencode arch=compute_62,code=sm_62
+    #-gencode arch=compute_52,code=[sm_52,compute_52]
+    #-gencode arch=compute_61,code=sm_61
+    #-gencode arch=compute_62,code=sm_62
+    -gencode arch=compute_50,code=sm_50
   )
   add_definitions(-DGPU)
 else()
